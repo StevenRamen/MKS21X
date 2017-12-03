@@ -12,13 +12,25 @@ public class Barcode {
 	return zip;
     }
     public String getCode() {
-	return null;
+	String ans = "";
+	for (int i = 0; i < zip.length() + 1; i ++) {
+	    ans += getDigit(i) + " ";
+	}
+	return ans;
     }
 
-    private String getDigit(int) {
-	return barcodes[int];
+    private String getDigit(int number) {
+	return barcodes[number];
     }
     private int getCheckDigit(String zip) {
-	return null;
+	int sum = 0;
+	for (int i = 0; i < zip.length(); i ++) {
+	    sum += (int) zip.charAt(i);
+	}
+	return sum % 10;
+    }
+
+    public String toString() {
+        return "| " + getCode() + "(" + getZip() + ") |";
     }
 }
