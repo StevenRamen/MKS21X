@@ -6,18 +6,43 @@ public class Barcode implements Comparable<Barcode> {
     private String zip;
     
     public Barcode(String zip) {
+	if (zip.length() != 5) {
+	    throw new IllegalArgumentException("Invalid Zipcode.");
+	}
+	for (int i = 0; i < zip.length(); i++) {
+	    if (!Character.isDigit(zip.charAt(i))) {
+		throw new IllegalArgumentException("Invalid Zipcode.");
+	    }
+	}
 	this.zip = zip;
     }
+
+    /*public static String toZip(String code) {
+	String[] barcodes = {"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|:|:", ":||::", "|:::|", "|::|:", "|:|::"};
+        code = code.substring(1, code.length() - 1);
+        String newZip = "";
+
+	
+        for (int i = 0; i < 5; i++) {
+            for (int x = 0; x < barcodes.length; i++) {
+                if (code.substring(5 * i, 5 * (i + 1)).equals(barcodes[x])) {
+                    newZip += x;
+                }
+            }
+        }
+        return newZip;
+
+	}*/
     
     public String getZip() {
 	return zip;
     }
     public String getCode() {
-	String ans = "";
+	String ans = "|";
 	for (int i = 0; i < zip.length(); i ++) {
-	    ans += barcodes[(Integer.valueOf(zip.substring(i, i + 1)))] + " ";
+	    ans += barcodes[(Integer.valueOf(zip.substring(i, i + 1)))];
 	}
-	ans += barcodes[getCheckDigit(zip)];
+	ans += barcodes[getCheckDigit(zip)] + "|";
 	
 	return ans;
     }
@@ -31,7 +56,7 @@ public class Barcode implements Comparable<Barcode> {
     }
 
     public String toString() {
-        return "| " + getCode() + " |  (" + getZip() + ")";
+        return getCode() + " (" + getZip() + ")";
     }
 
     public boolean equals(Barcode bar) {
@@ -61,5 +86,7 @@ public class Barcode implements Comparable<Barcode> {
 	System.out.println(a.equals(b));// false
 	System.out.println(a.equals(c));// true
 	System.out.println(a.equals(d));// false
+
+	//System.out.println(a.toZip("|::||:|::|:|:::|:||::||::::|::||"));
     }
 }
