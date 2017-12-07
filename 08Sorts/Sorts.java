@@ -55,8 +55,10 @@ public class Sorts {
 	    bleh[i] = (int)(Math.random() * 100);
 	}
 
+	System.out.println(name());
 	System.out.println(Arrays.toString(bleh));
-        insertionSort(bleh);
+	selectionSort(bleh);
+	//insertionSort(bleh);
 	System.out.println(Arrays.toString(bleh));
     }
 }
