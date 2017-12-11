@@ -49,6 +49,18 @@ public class Sorts {
 	}
     }
 
+    public static void bubbleSort(int[] data) {
+	for (int i = data.length; i >= 0; i --) {
+	    int next;
+	    for (int x = 0; x < data.length - 1; x ++) {
+		next = x + 1;
+		if (data[x] > data[next]) {
+		    swap(data, x, next);
+		}
+	    }
+	}
+    }
+
     public static void main(String[] args) {
 	int[] bleh = new int[5];
 	for (int i = 0; i < bleh.length; i ++) {
@@ -57,7 +69,8 @@ public class Sorts {
 
 	System.out.println(name());
 	System.out.println(Arrays.toString(bleh));
-	selectionSort(bleh);
+	bubbleSort(bleh);
+	//selectionSort(bleh);
 	//insertionSort(bleh);
 	System.out.println(Arrays.toString(bleh));
     }
