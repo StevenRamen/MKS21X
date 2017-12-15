@@ -10,7 +10,7 @@ public class TemperatureWindow extends JFrame implements ActionListener {
     private JButton FtoC;
     private JButton CtoF;
     private JTextField t2;
-    
+     
     public TemperatureWindow() {
 	
 	this.setTitle("Temperature Converter");
