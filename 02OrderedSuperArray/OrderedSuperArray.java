@@ -25,6 +25,7 @@ public class OrderedSuperArray extends SuperArray {
     public boolean add(String value){
 	//add to the correct spot.
 	//you may still use super.add(index,value)
+	
 	if (size != 0) {
 	    for (int i = size; i >= 0; i --) {
 		if (value.compareTo(data[i]) > 0) {
