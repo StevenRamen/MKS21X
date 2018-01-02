@@ -22,7 +22,7 @@ public class Sorts {
     }
 
     public static void selectionSort(int[] data) {
-        if (!isSorted(data)) {
+        while (!isSorted(data)) {
 	    for (int i = 0; i < data.length; i++) {
 		int smallestIndex = i;
 		for (int x = i; x < data.length; x ++) {
@@ -50,18 +50,20 @@ public class Sorts {
     }
 
     public static void bubbleSort(int[] data) {
-	for (int i = data.length; i >= 0; i --) {
-	    int next;
-	    for (int x = 0; x < data.length - 1; x ++) {
-		next = x + 1;
-		if (data[x] > data[next]) {
-		    swap(data, x, next);
+	while (!isSorted(data)) {
+	    for (int i = data.length; i >= 0; i --) {
+		int next;
+		for (int x = 0; x < data.length - 1; x ++) {
+		    next = x + 1;
+		    if (data[x] > data[next]) {
+			swap(data, x, next);
+		    }
 		}
 	    }
 	}
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 	int[] bleh = new int[5];
 	for (int i = 0; i < bleh.length; i ++) {
 	    bleh[i] = (int)(Math.random() * 100);
@@ -74,4 +76,5 @@ public class Sorts {
 	//insertionSort(bleh);
 	System.out.println(Arrays.toString(bleh));
     }
+    */
 }
